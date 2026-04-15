@@ -249,6 +249,9 @@
         <div id="product-carousel" class="overflow-hidden rounded-3xl shadow-2xl cursor-grab active:cursor-grabbing">
             <div id="carousel-track" class="flex transition-transform duration-500 ease-out" style="touch-action: pan-y;">
                 <div class="w-full flex-shrink-0">
+                    <img class="w-full h-auto" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/gemini-3-pro-image-preview-2kamelhoressaimagem.png" alt="Detalhe do cabo antiderrapante PP - Conformidade ergonômica"/>
+                </div>
+                <div class="w-full flex-shrink-0">
                     <img class="w-full h-auto" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/caracteristicas-kit.png" alt="Características do Kit - Lâmina com design moderno, conexão firme, aço inox e cabo ergonômico"/>
                 </div>
                 <div class="w-full flex-shrink-0">
@@ -271,6 +274,7 @@
             <button class="carousel-dot w-3 h-3 rounded-full bg-primary-container transition-all" data-index="0"></button>
             <button class="carousel-dot w-3 h-3 rounded-full bg-stone-300 transition-all" data-index="1"></button>
             <button class="carousel-dot w-3 h-3 rounded-full bg-stone-300 transition-all" data-index="2"></button>
+            <button class="carousel-dot w-3 h-3 rounded-full bg-stone-300 transition-all" data-index="3"></button>
         </div>
     </div>
 </section>
@@ -541,7 +545,7 @@
         const dots = document.querySelectorAll('.carousel-dot');
         if (!cTrack) return;
 
-        const totalSlides = 3;
+        const totalSlides = 4;
         let currentSlide = 0;
         let autoTimer = null;
         let startX = 0;

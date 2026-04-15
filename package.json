@@ -1,0 +1,11 @@
+{
+  "name": "lj-pg-entr",
+  "version": "1.0.0",
+  "description": "Lading pages Cash on Delivery",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.103.1"
+  }
+}

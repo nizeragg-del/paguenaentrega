@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+Thumbs.db
+.env*
+dist/
+build/
+.next/
+.gemini/
+scratch/
+screen.png

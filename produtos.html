@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nossos Produtos | Pague na Entrega</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#003053",
+                      "surface-container": "#f0edec",
+                      "tertiary": "#0061a2",
+                      "on-surface-variant": "#5a4137",
+                      "surface-variant": "#e5e2e1",
+                      "inverse-surface": "#313030",
+                      "on-tertiary-fixed": "#001d35",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#1c1b1b",
+                      "outline": "#8f7065",
+                      "background": "#fcf9f8",
+                      "surface-dim": "#dcd9d9",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#9dcaff",
+                      "tertiary-fixed": "#d1e4ff",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1c1b1b",
+                      "on-secondary-container": "#00732c",
+                      "on-tertiary-fixed-variant": "#00497c",
+                      "surface-tint": "#a53d00",
+                      "secondary-fixed": "#69ff87",
+                      "on-secondary-fixed": "#002108",
+                      "inverse-on-surface": "#f3f0ef",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#360f00",
+                      "primary": "#a53d00",
+                      "on-primary-container": "#541b00",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#7e2c00",
+                      "secondary-fixed-dim": "#3ce36a",
+                      "secondary-container": "#5cfd80",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-bright": "#fcf9f8",
+                      "tertiary-container": "#009afc",
+                      "surface-container-high": "#ebe7e7",
+                      "primary-fixed-dim": "#ffb597",
+                      "secondary": "#006e2a",
+                      "on-secondary-fixed-variant": "#00531e",
+                      "primary-fixed": "#ffdbcd",
+                      "inverse-primary": "#ffb597",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#ff6200",
+                      "outline-variant": "#e3bfb1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .tonal-depth { box-shadow: 0px 8px 16px rgba(165, 61, 0, 0.04); }
+        .ambient-shadow { box-shadow: 0px 8px 16px rgba(165, 61, 0, 0.08); }
+        .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 20s linear infinite;
+        }
+        
+        /* Sidebar Transition */
+        #mobile-sidebar { transition: opacity 0.3s ease-in-out; }
+        #sidebar-content { transition: transform 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-header bg-white/80 dark:bg-stone-900/80 backdrop-blur-md">
+    <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tight text-stone-900 dark:text-stone-50 flex items-center gap-2">
+            <div class="bg-primary-container p-1 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">package_2</span>
+            </div>
+            Pague na Entrega
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 text-stone-900 dark:text-stone-50">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
+        <div class="hidden lg:flex flex-1 max-w-xl mx-12">
+            <div class="relative w-full group">
+                <input class="w-full bg-surface-container-high border-none rounded-full py-2.5 px-6 pl-12 focus:ring-2 focus:ring-primary/40 transition-all outline-none" placeholder="O que você está procurando hoje?" type="text"/>
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-primary transition-colors">search</span>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] font-semibold">
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="index.html">Início</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="sobre.html">Sobre</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="como-funciona.html">Como Funciona</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="faq.html">FAQ</a>
+            <a href="produtos.html" class="bg-primary-container text-white px-6 py-2.5 rounded-full hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 shadow-lg shadow-primary/20 inline-block">Ver Produtos</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Announcement Bar (Marquee) -->
+<div class="fixed top-[72px] w-full z-40 bg-stone-900 text-white py-2 overflow-hidden whitespace-nowrap">
+    <div class="animate-marquee flex gap-12 text-xs font-bold uppercase tracking-widest">
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+    </div>
+</div>
+
+<!-- Mobile Sidebar -->
+<div id="mobile-sidebar" class="fixed inset-0 z-[60] hidden opacity-0 transition-opacity">
+    <div id="sidebar-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div id="sidebar-content" class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-stone-950 p-6 flex flex-col shadow-2xl translate-x-full">
+        <div class="flex justify-between items-center mb-10">
+            <div class="text-xl font-black flex items-center gap-2">
+                <div class="bg-primary-container p-1 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-sm">package_2</span>
+                </div>
+                Pague na Entrega
+            </div>
+            <button id="close-sidebar" class="p-2 text-stone-500">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-lg font-bold font-headline">
+            <a href="index.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">home</span> Início
+            </a>
+            <a href="sobre.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">info</span> Sobre
+            </a>
+            <a href="como-funciona.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">help</span> Como Funciona
+            </a>
+            <a href="faq.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">question_answer</span> FAQ
+            </a>
+            <hr class="border-stone-100 dark:border-stone-800 my-2">
+            <a href="produtos.html" class="bg-primary-container text-white px-6 py-4 rounded-2xl text-center shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">shopping_cart</span> Ver Produtos
+            </a>
+        </nav>
+    </div>
+</div>
+<main class="pt-32 pb-20 px-6 max-w-4xl mx-auto min-h-[60vh]">
+<h1 class="text-4xl md:text-5xl font-extrabold mb-8 text-stone-900 dark:text-white">Nossos Produtos</h1>
+<div class="prose dark:prose-invert max-w-none text-stone-600 dark:text-stone-300">
+
+<p class="mb-8 text-lg">Confira nossos produtos exclusivos disponíveis para Pagar na Entrega.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- Kit Facas -->
+    <div class="bg-surface-container-low rounded-2xl p-4 border hover:shadow-lg transition-all">
+        <div class="aspect-square bg-stone-200 rounded-xl mb-4 overflow-hidden">
+            <img src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/gemini-3-pro-image-preview-2kaesseeoKitmelho-1.png" class="w-full h-full object-cover" />
+        </div>
+        <h3 class="font-bold text-lg mb-2">Kit de Facas Profissionais Everrich</h3>
+        <p class="text-xl font-black text-primary mb-4">R$ 197,00</p>
+        <a href="landing_produtos/kit-facas.html" class="block text-center w-full bg-primary-container text-white py-2 rounded-xl font-bold hover:opacity-90">Ver Detalhes</a>
+    </div>
+</div>
+
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-950 w-full py-20 px-8 font-['Inter'] text-sm">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="text-xl font-bold text-stone-900 dark:text-stone-50 mb-6 flex items-center gap-2">
+<div class="bg-primary-container p-1 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">package_2</span>
+</div>
+                    Pague na Entrega
+                </div>
+<p class="text-stone-500 dark:text-stone-400 mb-8 leading-relaxed">A revolução do e-commerce seguro. Pioneiros na entrega em 24h com pagamento no recebimento.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors hover:text-white" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors hover:text-white" href="#">
+<span class="material-symbols-outlined text-xl">chat</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Menu</h4>
+<ul class="space-y-4">
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="#">Início</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="produtos.html">Categorias</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="como-funciona.html">Como Funciona</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="rastrear.html">Rastrear Pedido</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Suporte</h4>
+<ul class="space-y-4">
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="faq.html">FAQ</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="trocas.html">Trocas e Devoluções</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="termos.html">Termos de Uso</a></li>
+<li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="privacidade.html">Política de Privacidade</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Newsletter</h4>
+<p class="text-stone-500 dark:text-stone-400 mb-4">Receba ofertas exclusivas de 24h.</p>
+<div class="flex gap-2">
+<input class="bg-white dark:bg-stone-900 border-none rounded-xl px-4 py-2 w-full focus:ring-2 focus:ring-primary/40" placeholder="Seu e-mail" type="email"/>
+<button class="bg-primary-container text-white px-4 py-2 rounded-xl">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 text-center text-stone-500">
+        © 2026 Pague na Entrega. Direitos reservados.
+    </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/seu-numero" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform animate-pulse">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.32 0-4.518.892-6.193 2.527-3.271 3.191-3.483 8.354-.477 11.48L4.035 24l4.089-1.324c1.262.688 2.674 1.054 4.12 1.054a9.124 9.124 0 0 0 9.132-9.132 9.1 9.1 0 0 0-9.345-9.426zm0 16.512h-.018c-1.323 0-2.622-.353-3.755-1.022l-.268-.16-2.4 0.776.79-2.336-.176-.28a7.511 7.511 0 0 1-1.15-3.951c0-4.145 3.373-7.517 7.517-7.517a7.51 0 0 1 7.518 7.518 7.518 7.518 0 0 1-7.52 7.512zm4.12-5.613c-.225-.113-1.334-.656-1.54-.731-.207-.075-.357-.112-.507.113-.15.224-.58.73-.711.88-.131.15-.262.169-.487.056-.225-.113-.95-.35-1.81-1.117-.67-.597-1.121-1.336-1.253-1.56-.131-.225-.014-.346.099-.458.101-.1.225-.262.337-.393.113-.13.15-.225.225-.375.075-.15.037-.281-.019-.393-.056-.113-.507-1.217-.694-1.666-.182-.438-.369-.378-.507-.385-.13-.006-.281-.007-.431-.007-.15 0-.394.056-.6.281-.206.225-.788.77-0.788 1.874s.806 2.172.918 2.322c.112.15 1.586 2.421 3.842 3.394.537.231 1.042.488 1.39.6.536.173 1.025.148 1.41.092.43-.063 1.331-.544 1.521-1.069.19-.524.19-.974.133-1.068-.057-.094-.207-.15-.432-.262z"/></svg>
+</a>
+
+<script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function openNav() {
+        sidebar.classList.remove('hidden');
+        setTimeout(() => {
+            sidebar.classList.remove('opacity-0');
+            sidebarContent.classList.remove('translate-x-full');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+        sidebar.classList.add('opacity-0');
+        sidebarContent.classList.add('translate-x-full');
+        setTimeout(() => {
+            sidebar.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    if (menuButton) menuButton.addEventListener('click', openNav);
+    if (closeSidebar) closeSidebar.addEventListener('click', closeNav);
+    if (overlay) overlay.addEventListener('click', closeNav);
+</script>
+</body></html>

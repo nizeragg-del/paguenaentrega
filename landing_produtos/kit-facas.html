@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kit de Facas Profissionais Everrich | Pague na Entrega</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); }
+        .vsl-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            background: #000;
+        }
+        .vsl-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee-slow {
+            display: flex;
+            width: max-content;
+            animation: marquee 60s linear infinite;
+        }
+        .animate-marquee-slow:hover { animation-play-state: paused; }
+        
+        /* Sidebar Transition */
+        #mobile-sidebar { transition: opacity 0.3s ease-in-out; }
+        #sidebar-content { transition: transform 0.3s ease-in-out; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#a53d00",
+                      "primary-container": "#ff6200",
+                      "secondary": "#006e2a",
+                      "background": "#fcf9f8",
+                      "surface": "#fcf9f8",
+                      "on-surface": "#1c1b1b",
+                      "surface-variant": "#e5e2e1",
+                      "outline": "#8f7065",
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-header bg-white/80 dark:bg-stone-900/80 backdrop-blur-md">
+    <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        <div class="text-2xl font-black tracking-tight text-stone-900 dark:text-stone-50 flex items-center gap-2">
+            <div class="bg-primary-container p-1 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">package_2</span>
+            </div>
+            Pague na Entrega
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 text-stone-900 dark:text-stone-50">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+
+        <div class="hidden lg:flex flex-1 max-w-xl mx-12">
+            <div class="relative w-full group">
+                <input class="w-full bg-surface-container-high border-none rounded-full py-2.5 px-6 pl-12 focus:ring-2 focus:ring-primary/40 transition-all outline-none" placeholder="O que você está procurando hoje?" type="text"/>
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-primary transition-colors">search</span>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] font-semibold">
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="../index.html">Início</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="../sobre.html">Sobre</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="../como-funciona.html">Como Funciona</a>
+            <a class="text-stone-600 dark:text-stone-400 hover:text-orange-600 transition-all duration-300" href="../faq.html">FAQ</a>
+            <a href="../produtos.html" class="bg-primary-container text-white px-6 py-2.5 rounded-full hover:opacity-80 transition-all duration-300 shadow-lg shadow-primary/20 inline-block">Ver Produtos</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Announcement Bar (Marquee) -->
+<div class="fixed top-[72px] w-full z-40 bg-stone-900 text-white py-2 overflow-hidden whitespace-nowrap">
+    <div class="animate-marquee flex gap-12 text-xs font-bold uppercase tracking-widest">
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+        <span>Frete Grátis e Pagamento na Entrega</span>
+    </div>
+</div>
+
+<!-- Mobile Sidebar -->
+<div id="mobile-sidebar" class="fixed inset-0 z-[60] hidden opacity-0 transition-opacity">
+    <div id="sidebar-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div id="sidebar-content" class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-stone-950 p-6 flex flex-col shadow-2xl translate-x-full">
+        <div class="flex justify-between items-center mb-10">
+            <div class="text-xl font-black flex items-center gap-2">
+                <div class="bg-primary-container p-1 rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-sm">package_2</span>
+                </div>
+                Pague na Entrega
+            </div>
+            <button id="close-sidebar" class="p-2 text-stone-500">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-lg font-bold font-headline">
+            <a href="../index.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">home</span> Início
+            </a>
+            <a href="../sobre.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">info</span> Sobre
+            </a>
+            <a href="../como-funciona.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">help</span> Como Funciona
+            </a>
+            <a href="../faq.html" class="text-stone-600 dark:text-stone-300 flex items-center gap-3">
+                <span class="material-symbols-outlined">question_answer</span> FAQ
+            </a>
+            <hr class="border-stone-100 dark:border-stone-800 my-2">
+            <a href="../produtos.html" class="bg-primary-container text-white px-6 py-4 rounded-2xl text-center shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined">shopping_cart</span> Ver Produtos
+            </a>
+        </nav>
+    </div>
+</div>
+
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden px-6 py-12 md:py-20 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 order-2 md:order-1">
+<h1 class="font-headline text-4xl md:text-6xl font-extrabold tracking-tight text-on-surface leading-tight">
+                    Corte como um <span class="text-primary-container">Chef Profissional</span> na sua própria cozinha
+</h1>
+<p class="text-lg text-stone-600">O Kit de Facas Everrich combina precisão, ergonomia e durabilidade para transformar seu preparo de alimentos em uma experiência prazerosa.</p>
+<div class="flex flex-col space-y-2">
+<span class="text-stone-500 line-through text-xl">De R$ 397,00</span>
+<div class="flex items-baseline gap-2">
+<span class="text-primary-container font-black text-5xl">R$ 197,00</span>
+<span class="text-on-surface-variant font-medium">no PIX ou Pague na Entrega</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-secondary/10 p-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<span class="text-xs font-bold text-secondary uppercase">Pague na Entrega</span>
+</div>
+<div class="bg-primary/10 p-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-xs font-bold text-primary uppercase">Envio 24h</span>
+</div>
+<div class="bg-secondary/10 p-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="text-xs font-bold text-secondary uppercase">Frete Grátis</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-6 rounded-2xl font-black text-xl md:text-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all">
+                    Quero Meu Kit – Pague na Entrega
+                </button>
+</div>
+<div class="order-1 md:order-2 relative">
+<div class="absolute inset-0 bg-primary-container/10 rounded-full blur-3xl -z-10"></div>
+<img class="w-full h-auto rounded-3xl object-cover shadow-2xl" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/gemini-3-pro-image-preview-2kaesseeoKitmelho-1.png"/>
+</div>
+</section>
+
+<!-- VSL Section -->
+<section class="bg-stone-900 py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+        <h2 class="font-headline text-3xl md:text-5xl font-black text-white">Veja o Kit em Ação</h2>
+        <div class="vsl-container shadow-2xl">
+            <!-- Placeholder VSL Image per user request -->
+            <img src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/gemini-3-pro-image-preview-2karecrieessaimageme.png" alt="VSL Preview"/>
+            <div class="absolute inset-0 flex items-center justify-center cursor-pointer group">
+                <div class="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-white text-6xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                </div>
+            </div>
+        </div>
+        <p class="text-stone-400 text-lg">Assista ao vídeo para ver a precisão de corte e a durabilidade do aço Everrich.</p>
+    </div>
+</section>
+
+<!-- Problema + Solução -->
+<section class="bg-surface-container-low py-20 px-6">
+<div class="max-w-4xl mx-auto text-center space-y-8">
+<h2 class="font-headline text-3xl md:text-4xl font-bold">Cansado de brigar com facas que não cortam?</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    Picar carne, legumes e verduras não deveria ser um esforço. Facas cegas são perigosas e atrasam sua rotina. O <strong>Kit Everrich Pro</strong> utiliza tecnologia de têmpera em alta temperatura para manter o fio por muito mais tempo, garantindo cortes limpos e seguros.
+                </p>
+<div class="grid md:grid-cols-2 gap-8 text-left mt-12">
+<div class="bg-white p-8 rounded-2xl border-l-4 border-primary shadow-sm">
+<h4 class="font-bold text-xl mb-2 text-primary">O Problema</h4>
+<p class="text-on-surface-variant">Facas que perdem o fio rápido, cabos escorregadios e o medo de se cortar tentando forçar o corte.</p>
+</div>
+<div class="bg-white p-8 rounded-2xl border-l-4 border-secondary shadow-sm">
+<h4 class="font-bold text-xl mb-2 text-secondary">Nossa Solução</h4>
+<p class="text-on-surface-variant">Aço inoxidável de alto carbono, cabo ergonômico antiderrapante e design equilibrado para controle total.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Detalhes do Produto -->
+<section class="py-20 px-6 max-w-7xl mx-auto" id="features">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+        <img class="rounded-3xl shadow-xl" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/produto/gemini-3-pro-image-preview-2kamelhoressaimagem.png" alt="Detalhe do Cabo"/>
+        <div class="space-y-6">
+            <h2 class="font-headline text-3xl font-bold">Tecnologia Everrich</h2>
+            <ul class="space-y-4">
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    <div>
+                        <h4 class="font-bold">Aço Inoxidável Premium</h4>
+                        <p class="text-sm text-stone-500">Resistente à corrosão e manchas, fácil de limpar e manter.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    <div>
+                        <h4 class="font-bold">Cabo Ergonômico Antiderrapante</h4>
+                        <p class="text-sm text-stone-500">Design que se molda à mão, garantindo segurança mesmo com mãos úmidas.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    <div>
+                        <h4 class="font-bold">Equilíbrio Perfeito</h4>
+                        <p class="text-sm text-stone-500">O peso é distribuído entre a lâmina e o cabo para evitar fadiga no pulso.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Prova Social / Avaliações Reais (Infinite Carousel) -->
+<section class="py-20 bg-stone-50 overflow-hidden" id="reviews">
+    <div class="text-center mb-16 px-6">
+        <div class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm font-bold mb-4 uppercase">Avaliações Reais dos Clientes</div>
+        <h2 class="font-headline text-3xl md:text-5xl font-black">Quem comprou, aprovou!</h2>
+    </div>
+    
+    <div class="relative">
+        <div id="review-track" class="animate-marquee-slow flex gap-8 px-4">
+            <!-- Review 1 -->
+            <div class="flex-shrink-0 w-[300px] md:w-[400px] bg-white p-6 rounded-2xl shadow-md space-y-4">
+                <div class="flex gap-1 text-primary">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="italic text-stone-600">"As facas são lindas e cortam muito! O cabo realmente não escorrega. Valeu muito a pena."</p>
+                <div class="aspect-video rounded-xl overflow-hidden bg-stone-100">
+                    <img class="w-full h-full object-cover" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11134103-7r98o-m0by5fy2gkt9c2.png"/>
+                </div>
+                <div class="font-bold">Ricardo S. <span class="text-xs font-normal text-stone-400">Curitiba, PR</span></div>
+            </div>
+            <!-- Review 2 (Video) -->
+            <div class="flex-shrink-0 w-[300px] md:w-[400px] bg-white p-6 rounded-2xl shadow-md space-y-4">
+                <div class="flex gap-1 text-primary">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="italic text-stone-600">"Paguei pro motoboy aqui em casa, abri o kit antes de pagar e vi que era de qualidade msm."</p>
+                <div class="aspect-video rounded-xl overflow-hidden bg-black flex items-center justify-center group cursor-pointer relative">
+                    <video class="w-full h-full object-cover opacity-80" muted loop playsinline>
+                        <source src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11110103-6kfkp-m166hgbr82fif6.16000051728511634.mp4" type="video/mp4">
+                    </video>
+                    <span class="material-symbols-outlined text-white text-5xl absolute group-hover:scale-110 transition-transform pointer-events-none">play_circle</span>
+                </div>
+                <div class="font-bold">Amanda L. <span class="text-xs font-normal text-stone-400">São Paulo, SP</span></div>
+            </div>
+            <!-- Review 3 -->
+            <div class="flex-shrink-0 w-[300px] md:w-[400px] bg-white p-6 rounded-2xl shadow-md space-y-4">
+                <div class="flex gap-1 text-primary">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="italic text-stone-600">"O kit é super completo, vem até o descascador. Já estou usando há um mês e continua afiada."</p>
+                <div class="aspect-video rounded-xl overflow-hidden bg-stone-100">
+                    <img class="w-full h-full object-cover" src="https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11134103-7r98o-m166hr0lkwb496.png"/>
+                </div>
+                <div class="font-bold">Felipe M. <span class="text-xs font-normal text-stone-400">Belo Horizonte, MG</span></div>
+            </div>
+            <!-- More reviews will be cloned by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- Final Offer -->
+<section class="py-20 px-6 bg-primary-container/10">
+<div class="max-w-3xl mx-auto text-center space-y-8 bg-white p-12 rounded-[2rem] shadow-2xl border-2 border-primary-container/20">
+    <span class="bg-red-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase animate-bounce">Oferta limitada: 50% OFF</span>
+    <h2 class="font-headline text-4xl font-black">Leve o Kit Everrich Completo Hoje!</h2>
+    <div class="space-y-2">
+        <p class="text-stone-400 line-through">De R$ 397,00</p>
+        <p class="text-primary-container font-black text-7xl">R$ 197,00</p>
+        <p class="text-secondary font-bold">Pague Somente na Entrega</p>
+    </div>
+    <button class="w-full bg-primary-container text-white py-8 rounded-2xl font-black text-2xl shadow-xl hover:scale-105 active:scale-95 transition-all">
+        Comprar Agora com Pague na Entrega
+    </button>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 px-6 max-w-4xl mx-auto" id="support">
+<h2 class="font-headline text-3xl font-bold text-center mb-12">Perguntas Frequentes</h2>
+<div class="space-y-4">
+<details class="group bg-white rounded-2xl p-6 shadow-sm [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="font-bold text-lg">As facas já vêm afiadas?</h4>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-stone-600">Sim, as facas passam por um processo de afiação a laser na fábrica e chegam prontas para o uso profissional.</p>
+</details>
+<details class="group bg-white rounded-2xl p-6 shadow-sm [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="font-bold text-lg">Qual o material das facas?</h4>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-stone-600">São fabricadas em aço inoxidável 7Cr17 de alto carbono, conhecido pela excelente retenção de fio e resistência.</p>
+</details>
+<details class="group bg-white rounded-2xl p-6 shadow-sm [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex items-center justify-between cursor-pointer">
+<h4 class="font-bold text-lg">Como funciona o Pagamento na Entrega?</h4>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-stone-600">Você faz o pedido aqui no site. Nosso entregador leva o produto até você em 24h. Você confere as facas e só então realiza o pagamento (Dinheiro ou Cartão).</p>
+</details>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-950 w-full py-20 px-8 font-['Inter'] text-sm">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+        <div class="col-span-1 md:col-span-1">
+            <div class="text-xl font-bold text-stone-900 dark:text-stone-50 mb-6 flex items-center gap-2">
+                <div class="bg-primary-container p-1 rounded flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-lg">package_2</span>
+                </div>
+                Pague na Entrega
+            </div>
+            <p class="text-stone-500 dark:text-stone-400 mb-8 leading-relaxed">A revolução do e-commerce seguro. Pioneiros na entrega em 24h com pagamento no recebimento.</p>
+            <div class="flex gap-4">
+                <a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors hover:text-white" href="#">
+                    <span class="material-symbols-outlined text-xl">share</span>
+                </a>
+                <a class="w-10 h-10 rounded-full bg-stone-200 dark:bg-stone-800 flex items-center justify-center hover:bg-primary transition-colors hover:text-white" href="#">
+                    <span class="material-symbols-outlined text-xl">chat</span>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Menu</h4>
+            <ul class="space-y-4">
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../index.html">Início</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../produtos.html">Categorias</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../como-funciona.html">Como Funciona</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../rastrear.html">Rastrear Pedido</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Suporte</h4>
+            <ul class="space-y-4">
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../faq.html">FAQ</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../trocas.html">Trocas e Devoluções</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../termos.html">Termos de Uso</a></li>
+                <li><a class="text-stone-500 dark:text-stone-400 hover:text-orange-500 transition-colors duration-200 underline-offset-4 hover:underline" href="../privacidade.html">Política de Privacidade</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-black text-stone-900 dark:text-stone-100 mb-6 uppercase tracking-wider text-xs">Newsletter</h4>
+            <p class="text-stone-500 dark:text-stone-400 mb-4">Receba ofertas exclusivas de 24h.</p>
+            <div class="flex gap-2">
+                <input class="bg-white dark:bg-stone-900 border-none rounded-xl px-4 py-2 w-full focus:ring-2 focus:ring-primary/40" placeholder="Seu e-mail" type="email"/>
+                <button class="bg-primary-container text-white px-4 py-2 rounded-xl">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-stone-200 dark:border-stone-800 text-center text-stone-500">
+        © 2026 Pague na Entrega. A revolução do e-commerce seguro.
+    </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/seu-numero" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform animate-pulse">
+    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.32 0-4.518.892-6.193 2.527-3.271 3.191-3.483 8.354-.477 11.48L4.035 24l4.089-1.324c1.262.688 2.674 1.054 4.12 1.054a9.124 9.124 0 0 0 9.132-9.132 9.1 9.1 0 0 0-9.345-9.426zm0 16.512h-.018c-1.323 0-2.622-.353-3.755-1.022l-.268-.16-2.4 0.776.79-2.336-.176-.28a7.511 7.511 0 0 1-1.15-3.951c0-4.145 3.373-7.517 7.517-7.517a7.51 7.51 0 0 1 7.518 7.518 7.518 7.518 0 0 1-7.52 7.512zm4.12-5.613c-.225-.113-1.334-.656-1.54-.731-.207-.075-.357-.112-.507.113-.15.224-.58.73-.711.88-.131.15-.262.169-.487.056-.225-.113-.95-.35-1.81-1.117-.67-.597-1.121-1.336-1.253-1.56-.131-.225-.014-.346.099-.458.101-.1.225-.262.337-.393.113-.13.15-.225.225-.375.075-.15.037-.281-.019-.393-.056-.113-.507-1.217-.694-1.666-.182-.438-.369-.378-.507-.385-.13-.006-.281-.007-.431-.007-.15 0-.394.056-.6.281-.206.225-.788.77-0.788 1.874s.806 2.172.918 2.322c.112.15 1.586 2.421 3.842 3.394.537.231 1.042.488 1.39.6.536.173 1.025.148 1.41.092.43-.063 1.331-.544 1.521-1.069.19-.524.19-.974.133-1.068-.057-.094-.207-.15-.432-.262z"/></svg>
+</a>
+
+<script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebar = document.getElementById('mobile-sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function openNav() {
+        sidebar.classList.remove('hidden');
+        setTimeout(() => {
+            sidebar.classList.remove('opacity-0');
+            sidebarContent.classList.remove('translate-x-full');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+        sidebar.classList.add('opacity-0');
+        sidebarContent.classList.add('translate-x-full');
+        setTimeout(() => {
+            sidebar.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    if (menuButton) menuButton.addEventListener('click', openNav);
+    if (closeSidebar) closeSidebar.addEventListener('click', closeNav);
+    if (overlay) overlay.addEventListener('click', closeNav);
+
+    // Infinite Carousel Logic
+    const track = document.getElementById('review-track');
+    if (track) {
+        const reviews = [
+            { type: 'video', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11110103-6kfkp-m1vrk1qy1a8820.16000051730060440.mp4', text: 'Chegou rápido e o pagamento na porta deu muita segurança.', author: 'Marcos T.', geo: 'Rio de Janeiro, RJ' },
+            { type: 'image', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11134103-7r98o-m0by5fy2hzdped.png', text: 'Melhor compra do ano! Super afiadas.', author: 'Julia R.', geo: 'Florianópolis, SC' },
+            { type: 'video', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11110103-6kfkp-m28pjtssgqiu71.16000051730844002.mp4', text: 'O aço é de qualidade mesmo, pesada e equilibrada.', author: 'Carlos A.', geo: 'Recife, PE' },
+            { type: 'image', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11134103-7r98o-m1460ywgfx5c56.png', text: 'Recomendo a todos, vale cada centavo.', author: 'Sandra L.', geo: 'Goiânia, GO' },
+            { type: 'video', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11110103-6kfkr-m23cyvj7qpjl86.16000051730520182.mp4', text: 'Cabo top, não escorrega nada.', author: 'Roberto K.', geo: 'Brasília, DF' },
+            { type: 'image', src: 'https://eqvsghbhjrjshnamtmcj.supabase.co/storage/v1/object/public/products/kit-facas/avaliacoes/br-11134103-7r98o-m166hr0lmavkbb.png', text: 'O design é lindo, além de funcional.', author: 'Beatriz F.', geo: 'Porto Alegre, RS' }
+        ];
+
+        reviews.forEach(r => {
+            const card = document.createElement('div');
+            card.className = 'flex-shrink-0 w-[300px] md:w-[400px] bg-white p-6 rounded-2xl shadow-md space-y-4';
+            card.innerHTML = `
+                <div class="flex gap-1 text-primary">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="italic text-stone-600">"${r.text}"</p>
+                <div class="aspect-video rounded-xl overflow-hidden ${r.type === 'video' ? 'bg-black' : 'bg-stone-100'} relative cursor-pointer group">
+                    ${r.type === 'video' 
+                        ? `<video class="w-full h-full object-cover opacity-80" muted loop playsinline><source src="${r.src}" type="video/mp4"></video><span class="material-symbols-outlined text-white text-5xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform pointer-events-none">play_circle</span>`
+                        : `<img class="w-full h-full object-cover" src="${r.src}"/>`}
+                </div>
+                <div class="font-bold">${r.author} <span class="text-xs font-normal text-stone-400">${r.geo}</span></div>
+            `;
+            track.appendChild(card);
+        });
+
+        // Clone all for infinite effect
+        const items = [...track.children];
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            track.appendChild(clone);
+        });
+    }
+
+    // Video play/pause on click for reviews
+    document.addEventListener('click', (e) => {
+        const videoContainer = e.target.closest('.aspect-video');
+        if (videoContainer) {
+            const video = videoContainer.querySelector('video');
+            if (video) {
+                if (video.paused) {
+                    video.play();
+                    video.classList.remove('opacity-80');
+                    videoContainer.querySelector('.material-symbols-outlined').style.display = 'none';
+                } else {
+                    video.pause();
+                    video.classList.add('opacity-80');
+                    videoContainer.querySelector('.material-symbols-outlined').style.display = 'block';
+                }
+            }
+        }
+    });
+</script>
+</body></html>
